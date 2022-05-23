@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import "main/cmd"
 
 func main() {
-	fmt.Println("Hello")
+	// archiver pack vlc <path to file>
+
+	// awesomeProject2
+	cmd.Execute()
+
 }
