@@ -6,6 +6,8 @@ func main() {
 	// archiver pack vlc <path to file>
 	// go run main.go pack vlc example.txt
 	// awesomeProject2
+	// binary tree <- commit
+
 	cmd.Execute()
 
 }
