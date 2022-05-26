@@ -34,7 +34,7 @@ func pack(cmd *cobra.Command, args []string) {
 	case "vlc":
 		encoder = vlc.New()
 	default:
-		cmd.PrintErr("unknown metod")
+		cmd.PrintErr("unknown method")
 	}
 
 	filePath := args[0]

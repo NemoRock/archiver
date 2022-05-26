@@ -33,7 +33,7 @@ func unpack(cmd *cobra.Command, args []string) {
 	case "vlc":
 		decoder = vlc.New()
 	default:
-		cmd.PrintErr("unknown metod")
+		cmd.PrintErr("unknown method")
 	}
 	filePath := args[0]
 
@@ -42,6 +42,7 @@ func unpack(cmd *cobra.Command, args []string) {
 		handleErr(err)
 	}
 	defer r.Close()
+
 	data, err := io.ReadAll(r)
 	if err != nil {
 		handleErr(err)
@@ -49,7 +50,7 @@ func unpack(cmd *cobra.Command, args []string) {
 
 	packed := decoder.Decode(data)
 
-	err = os.WriteFile(unpackedFileName(filePath), packed, 0644)
+	err = os.WriteFile(unpackedFileName(filePath), []byte(packed), 0644)
 	if err != nil {
 		handleErr(err)
 	}
@@ -63,7 +64,7 @@ func unpackedFileName(path string) string {
 func init() {
 	rootCmd.AddCommand(unpackCmd)
 
-	packCmd.Flags().StringP("method", "m", "", "decompression method:vlc")
+	unpackCmd.Flags().StringP("method", "m", "", "decompression method:vlc")
 
 	if err := unpackCmd.MarkFlagRequired("method"); err != nil {
 		panic(err)
